@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Form from "react-bootstrap/Form";
 import { Alert, Button } from "react-bootstrap";
@@ -6,12 +6,27 @@ import dishes from "../assets/images/dishes.svg";
 import Footer from "../components/Footer";
 import { loginUser } from "../services/APIService";
 import { useNavigate } from "react-router-dom";
-import { setItemJSON } from "../helpers/storage";
+import { getItemJSON, setItemJSON } from "../helpers/storage";
 
-const Home = (props) => {
+const Home = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  // Si connecté en tant que user, redirection vers Search.
+  // Si non connecté comme user, on vérifie si connecté comme resto.
+  // Si connecté comme resto, redidrection vers restodashboard.
+  useEffect(() => {
+    const u = getItemJSON("user");
+    if (u) {
+      navigate("/search");
+    } else {
+      const r = getItemJSON("resto");
+      if (r) {
+        navigate("/restodashboard");
+      }
+    }
+  }, []); // Tableau de paramètres.
 
   const onLoginUser = async () => {
     try {

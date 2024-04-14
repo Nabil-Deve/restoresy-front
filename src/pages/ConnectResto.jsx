@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { setItemJSON } from "../helpers/storage";
 import Footer from "../components/Footer";
 
-const ConnectResto = (props) => {
+const ConnectResto = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,9 +17,9 @@ const ConnectResto = (props) => {
         email,
         password,
       });
-      console.log(res.data);
       let resto = res.data.resto;
       resto.token = res.data.token;
+      console.log(res);
       setItemJSON("resto", resto);
       navigate("/restodashboard");
     } catch (e) {

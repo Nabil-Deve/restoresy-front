@@ -70,12 +70,12 @@ const UserBookings = (props) => {
               ) : null}
               {booking.status == "refused" ? (
                 <Card.Text style={{ color: "red" }}>
-                  Annulé par le resto
+                  Annulée par le resto
                 </Card.Text>
               ) : null}
               {booking.status == "accepted" ? (
                 <Card.Text style={{ color: "green" }}>
-                  Confirmé par le resto
+                  Confirmée par le resto
                 </Card.Text>
               ) : null}
               {booking.status == "canceled" ? (
@@ -98,6 +98,15 @@ const UserBookings = (props) => {
                   onClick={() => onCancelBooking(booking._id)}
                 >
                   Annuler
+                </Button>
+              ) : null}
+
+              {booking.status == "accepted" ? (
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/ratingpage/" + booking.resto._id)}
+                >
+                  Noter
                 </Button>
               ) : null}
             </Card.Body>

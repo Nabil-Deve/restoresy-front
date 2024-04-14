@@ -12,32 +12,40 @@ import Form from "react-bootstrap/Form";
 import { useNavigate, useParams } from "react-router-dom";
 import { createBooking, getRestoById } from "../services/APIService";
 
-const Booking = (props) => {
+const Booking = () => {
+  // React va sur localhost:3000/booking/id (du resto)
+  // Le useParams va lui permettre de récupéer l'id du resto
+  // useParams : fonction de React.
   const params = useParams();
   const navigate = useNavigate();
+
+  // Initialiser l'état du resto à null car on n'a pas encore choisi de resto
   const [resto, setResto] = useState(null);
 
+  // L'état des variables avant de réserver
   const [numberGuests, setNumberGuests] = useState(1);
   const [hour, setHour] = useState(new Date());
   const [comment, setComment] = useState(null);
   const [date, setDate] = useState(new Date());
 
+  // Elle sert à récupérer l'id du resto dans le back
   const onGetResto = async () => {
     try {
       const restoId = params.restoId;
-      const res = await getRestoById(restoId);
-      setResto(res.data);
+      const res = await getRestoById(restoId); // res : réponse qu'on reçoit du back
+      setResto(res.data); // Pour afficher les infos du resto. Objet qu'on voit dans la console. C'est le resto.
+      console.log(res.data);
     } catch (e) {
       alert(e);
     }
   };
 
   useEffect(() => {
-    // une fois que le composant est chargé, on appelle la fonction onGetResto qui va récupérer le resto avec son id (dans les params) depuis le back-end
+    // Chaque fois que params change, une fois que le composant est chargé, on appelle la fonction onGetResto qui va récupérer le resto avec son id (dans les params) depuis le back-end
     if (params.restoId) {
       onGetResto();
     }
-  }, [params]);
+  }, [params]); // Quand la valeur de params change, on réexecute la fonction.
 
   const increase = () => {
     if (numberGuests + 1 <= 12) {
@@ -51,6 +59,7 @@ const Booking = (props) => {
     }
   };
 
+  // Fonction qui sera appelée au click pour pouvoir créer le booking dans la bancked
   const onCreateBooking = async () => {
     try {
       const res = await createBooking(
@@ -77,6 +86,7 @@ const Booking = (props) => {
               <img src={restophoto} />
             </Col>
             <Col>
+              {/*C'est la fonction setResto qui change la valeur du resto. */}
               <div>
                 <h1>{resto.name}</h1>
                 <p>{resto.address} </p>
@@ -100,6 +110,7 @@ const Booking = (props) => {
               <div className="timepicker">
                 <TimePicker onChange={setHour} value={hour} />
               </div>
+
               <p className="comment-bp">Commentaires</p>
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -132,3 +143,15 @@ const Booking = (props) => {
 };
 
 export default Booking;
+
+{
+  /*{/*
+
+ useEffect(() => {
+    // on appelle notre Notre fonction 
+    onGetResto()
+
+  }, [params]); quand la varible params elle change le use efffect il se réexécute 
+
+*/
+}

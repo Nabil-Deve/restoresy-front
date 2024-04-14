@@ -8,14 +8,18 @@ import "react-calendar/dist/Calendar.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import { useNavigate, useParams } from "react-router-dom";
-import { getRestoById } from "../services/APIService";
+import { getRestoById, getRestoRatings } from "../services/APIService";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-const RestoPage = (props) => {
+const RestoPage = () => {
   const navigate = useNavigate();
+
   const params = useParams();
+
   const [resto, setResto] = useState(null);
   const [selectedSection, setSelectedSection] = useState("about");
+  const [ratings, setRatings] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
 
   const onGetResto = async () => {
     try {
@@ -33,6 +37,30 @@ const RestoPage = (props) => {
     }
   }, [params]);
 
+  // Fonction qui permet de récupérer les avis
+  const onGetRestoRatings = async () => {
+    try {
+      const res = await getRestoRatings(resto._id);
+      setRatings(res.data);
+      let average =
+        res.data.length > 0
+          ? res.data.reduce((acc, rating) => acc + rating.stars, 0) / // ? : si    : else
+            res.data.length
+          : 0;
+
+      setAverageRating(average);
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  // Quand le composant est chargé
+  useEffect(() => {
+    if (resto) {
+      onGetRestoRatings();
+    }
+  }, [resto]);
+
   if (resto) {
     return (
       <div>
@@ -46,7 +74,15 @@ const RestoPage = (props) => {
                 <div className="resto-address">
                   <h1>
                     {resto.name}
-                    <ReactStars count={5} size={40} activeColor="#ffd700" />
+                    {averageRating != 0 ? (
+                      <ReactStars
+                        edit={false}
+                        value={averageRating}
+                        count={5}
+                        size={40}
+                        activeColor="#ffd700"
+                      />
+                    ) : null}
                   </h1>
                   <p>{resto.address}</p>
                   <p>{resto.cuisine}</p>
@@ -91,6 +127,26 @@ const RestoPage = (props) => {
               {selectedSection == "menu" ? (
                 <div className="resto-menu">
                   <p style={{ marginLeft: "10px" }}> {resto.menu}</p>
+                </div>
+              ) : null}
+
+              {selectedSection == "ratings" ? (
+                <div className="resto-menu">
+                  {ratings.map((rating, index) => (
+                    <div key={"rating" + index}>
+                      <ReactStars
+                        edit={false}
+                        value={rating.stars}
+                        count={5}
+                        size={40}
+                        activeColor="#ffd700"
+                      />
+                      <h4>{rating.content}</h4>
+                      {rating.restoReply ? (
+                        <p>Réponse du resto : {rating.restoReply}</p>
+                      ) : null}
+                    </div>
+                  ))}
                 </div>
               ) : null}
             </Col>

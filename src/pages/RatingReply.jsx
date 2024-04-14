@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Col, Form, Container, Button } from "react-bootstrap";
 
-const RatingReply = (props) => {
+const RatingReply = () => {
   return (
     <div>
       <Header />

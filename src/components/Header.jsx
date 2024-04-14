@@ -49,7 +49,7 @@ const Header = (props) => {
         {user ? (
           <div style={{ display: "flex", flexDirection: "row" }}>
             <div
-              onClick={() => navigate("/userpage")} // Cela redirige vers la page UserPage
+              onClick={() => navigate("/modifyuserpage")} // Cela redirige vers la page ModifyUserPage
               style={{ cursor: "pointer" }}
             >
               <span style={{ marginRight: 10 }}> {user.firstName}</span>

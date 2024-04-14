@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import restophoto from "../assets/images/restophoto.svg";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
-const BookingConfirmation = (props) => {
+const BookingConfirmation = () => {
   return (
     <div>
       <Header />
@@ -16,10 +16,12 @@ const BookingConfirmation = (props) => {
           <p>Cuisine Variée</p>
         </div>
       </div>
+
       <div className="validate-booking">
         <h1>Jean-Marc souhaite réserver une table dans votre restaurant!</h1>
         <h1>Valider la date et l’heure de la réservation numéro 1872032583</h1>
       </div>
+
       <Container className="buttons-container-bc">
         <Row>
           <Col>

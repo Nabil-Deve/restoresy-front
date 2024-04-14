@@ -6,19 +6,23 @@ import { useNavigate } from "react-router-dom";
 import { getItemJSON } from "../helpers/storage";
 import {
   acceptBooking,
+  getMyRatings,
   getRestoBookings,
   refuseBooking,
 } from "../services/APIService";
+import ReactStars from "react-rating-stars-component";
 import moment from "moment";
 import "moment/min/locales";
+import RatingCardResto from "../components/RatingCardResto";
 moment.locale("fr");
 
-const RestoDashboard = (props) => {
+const RestoDashboard = () => {
   const navigate = useNavigate();
   // Récupérer un resto qui est connecté
   // On créé un state
   const [resto, setResto] = useState(null);
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState([]); // On initialise avec un tableau vide. On y stocke les résas.
+  const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
     const u = getItemJSON("resto");
@@ -47,6 +51,7 @@ const RestoDashboard = (props) => {
     }
   }, [resto]);
 
+  // Fonction qui permet de refuser une résa
   const onRefuseBooking = async (bookingId) => {
     try {
       const res = await refuseBooking(bookingId);
@@ -67,6 +72,21 @@ const RestoDashboard = (props) => {
       alert(e);
     }
   };
+
+  // Fonction qui récupère tous les tous les avis par le resto
+  const onGetMyRatings = async () => {
+    try {
+      const res = await getMyRatings();
+      setRatings(res.data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  // On appelle cette fonction dans un useEffect quand la page est chargé
+  useEffect(() => {
+    onGetMyRatings();
+  }, []);
 
   return (
     <div>
@@ -134,27 +154,9 @@ const RestoDashboard = (props) => {
 
           <Col>
             <h1>Avis des clients</h1>
-            <Card className="card-dashboard">
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Voir</Button>
-              </Card.Body>
-            </Card>
-
-            <Card className="card-dashboard">
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Voir</Button>
-              </Card.Body>
-            </Card>
+            {ratings.map((rating, index) => (
+              <RatingCardResto rating={rating} key={"ratingcard" + index} />
+            ))}
           </Col>
         </Row>
       </Container>

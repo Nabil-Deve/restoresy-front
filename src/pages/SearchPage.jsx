@@ -12,14 +12,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { getItemJSON } from "../helpers/storage";
 import { useNavigate } from "react-router-dom";
-import { getAllRestos } from "../services/APIService";
+import { getAllRestos, searchRestos } from "../services/APIService";
 import { Button } from "react-bootstrap";
 
 const Search = (props) => {
   const navigate = useNavigate();
   const [restos, setRestos] = useState([]);
+  const [foundRestos, setFoundRestos] = useState([]);
   // on récupère l'utilisateur qui est connecté
   const [user, setUser] = useState(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     // une fois que la page est chargée
@@ -50,6 +52,27 @@ const Search = (props) => {
     onGetAllRestos();
   }, []);
 
+  // Fonction qui recherche les restos
+  const onSearchRestos = async () => {
+    try {
+      const res = await searchRestos(query);
+      setFoundRestos(res.data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  // Dès que le champs de texte query change,
+  useEffect(() => {
+    if (!!query) {
+      // !! : si query n'est pas un texte vide
+      // On vérifie s'il existe
+      onSearchRestos(); // On appelle cette fonction
+    } else {
+      setFoundRestos([]);
+    }
+  }, [query]);
+
   if (user) {
     return (
       <div>
@@ -62,24 +85,42 @@ const Search = (props) => {
           <h2>Recherchez votre restaurant préféré!</h2>
           <div className="input-group">
             <input
+              onChange={(e) => setQuery(e.target.value)}
+              value={query}
               type="text"
               className="form-control"
               placeholder="Nom, type de cuisine, emplacement "
               aria-label="Nom du restaurant"
               aria-describedby="button-addon2"
             />
-
-            <img src={magnifyingglass} />
-
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              id="button-addon2"
-            >
-              Rechercher
-            </button>
           </div>
-
+          <Container className="restos-selection">
+            <Row>
+              {foundRestos.map((resto, index) => (
+                <Col key={"foundResto" + index}>
+                  <div>
+                    <img
+                      className="card-resto-search"
+                      onClick={() => navigate("/restopage/" + resto._id)}
+                      src={resto.imageURI}
+                    />
+                    <p>{resto.name}</p>
+                    <p>
+                      <img src={map} />
+                      <p
+                        onClick={() =>
+                          (window.location.href =
+                            "http://maps.google.com/?q=" + resto.address)
+                        }
+                      >
+                        {resto.address}
+                      </p>
+                    </p>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
           <div className="resto-select">
             <h1>
               Notre sélection du jour <img src={heart} />
