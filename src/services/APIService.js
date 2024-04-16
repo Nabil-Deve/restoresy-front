@@ -5,29 +5,51 @@ const uriPath = "https://restoresy-back.vercel.app/";
 
 // APIService est le fichier qui contient toutes les fonctions qui vont intéragir avec le backend. On utilise la bibliothèque axios pour faire des requêtes http à notre serveur sur les différentes routes. Ex : /restos/register : ceci est une route qui est préalablement créée sur notre backend. Data : correspond à toutes les données qu'on envoie dans le body de la requête. Les données dans data doivent être strictement similaires aux données attendues côté backend respectant exactement la même nomenclature.
 
+// Fonction qui permet d'autoriser les headers
+function createAuthHeaders() {
+  const user = getItemJSON("user");
+  return {
+    Credentials: false,
+    "Content-type": "application/json",
+    Authorization: `Bearer ${user?.token}`,
+  };
+}
+
 const registerResto = async (data) => {
-  return axios.post(uriPath + "/restos/register", data);
+  return axios.post(uriPath + "/restos/register", data, {
+    headers: createAuthHeaders(),
+  });
 };
 
 const registerUser = async (data) => {
-  return axios.post(uriPath + "/users/register", data);
+  return axios.post(uriPath + "/users/register", data, {
+    headers: createAuthHeaders(),
+  });
 };
 
 const loginUser = async (data) => {
-  return axios.post(uriPath + "/users/login", data);
+  return axios.post(uriPath + "/users/login", data, {
+    headers: createAuthHeaders(),
+  });
 };
 
 const loginResto = async (data) => {
-  return axios.post(uriPath + "/restos/login", data);
+  return axios.post(uriPath + "/restos/login", data, {
+    headers: createAuthHeaders(),
+  });
 };
 
 const getAllRestos = async () => {
-  return axios.get(uriPath + "/users/get/restos");
+  return axios.get(uriPath + "/users/get/restos", {
+    headers: createAuthHeaders(),
+  });
 };
 
 // service qui récupère un resto avec son id
 const getRestoById = async (restoId) => {
-  return axios.get(uriPath + "/users/get/resto/" + restoId);
+  return axios.get(uriPath + "/users/get/resto/" + restoId, {
+    headers: createAuthHeaders(),
+  });
 };
 
 // Appeler la route qui va créer une résa
@@ -42,7 +64,9 @@ const createBooking = async (restoId, numberGuests, hour, date, comment) => {
   return axios.post(
     uriPath + "/bookings/create/" + restoId,
     { numberGuests, hour, date, comment },
-    config
+    {
+      headers: createAuthHeaders(),
+    }
   );
 };
 
@@ -54,7 +78,9 @@ const getUserBookings = async () => {
       Authorization: `Bearer ${user.token}`,
     },
   };
-  return axios.get(uriPath + "/bookings/getUserBookings", config);
+  return axios.get(uriPath + "/bookings/getUserBookings", {
+    headers: createAuthHeaders(),
+  });
 };
 
 // Annuler une réservation
@@ -66,7 +92,13 @@ const cancelBooking = async (bookingId) => {
       Authorization: `Bearer ${user.token}`,
     },
   };
-  return axios.put(uriPath + "/bookings/cancel/" + bookingId, {}, config);
+  return axios.put(
+    uriPath + "/bookings/cancel/" + bookingId,
+    {},
+    {
+      headers: createAuthHeaders(),
+    }
+  );
 };
 
 // Fonction qui récupère les bookings d'un resto
@@ -78,7 +110,9 @@ const getRestoBookings = async () => {
       Authorization: `Bearer ${resto.token}`,
     },
   };
-  return axios.get(uriPath + "/bookings/getRestoBookings", config);
+  return axios.get(uriPath + "/bookings/getRestoBookings", {
+    headers: createAuthHeaders(),
+  });
 };
 
 // Fonction qui permet au resto de refuser une résa
@@ -93,7 +127,9 @@ const refuseBooking = async (bookingId) => {
   return axios.put(
     uriPath + "/bookings/refuseBooking/" + bookingId,
     {}, // On n'envoie pas d'infos mais le statut qu'on précise.
-    config
+    {
+      headers: createAuthHeaders(),
+    }
   );
 };
 
@@ -109,12 +145,20 @@ const acceptBooking = async (bookingId) => {
   return axios.put(
     uriPath + "/bookings/acceptBooking/" + bookingId,
     {},
-    config
+    {
+      headers: createAuthHeaders(),
+    }
   );
 };
 
 const searchRestos = async (query) => {
-  return axios.post(uriPath + "/users/searchResto", { query });
+  return axios.post(
+    uriPath + "/users/searchResto",
+    { query },
+    {
+      headers: createAuthHeaders(),
+    }
+  );
 };
 
 // Service qui permet de créer un rating
@@ -130,7 +174,9 @@ const createRating = async (data) => {
   return axios.post(
     uriPath + "/ratings/create/" + data.restoId,
     data, // On envoie data (c'est un objet) qui contient toutes les données
-    config
+    {
+      headers: createAuthHeaders(),
+    }
   );
 };
 
@@ -143,7 +189,9 @@ const getRestoRatings = async (restoId) => {
       Authorization: `Bearer ${user.token}`,
     },
   };
-  return axios.get(uriPath + "/ratings/getRestoRatings/" + restoId, config);
+  return axios.get(uriPath + "/ratings/getRestoRatings/" + restoId, {
+    headers: createAuthHeaders(),
+  });
 };
 
 //Service qui récupère tous les avis PAR un resto
@@ -155,7 +203,9 @@ const getMyRatings = async () => {
       Authorization: `Bearer ${resto.token}`,
     },
   };
-  return axios.get(uriPath + "/ratings/getMyRatings", config);
+  return axios.get(uriPath + "/ratings/getMyRatings", {
+    headers: createAuthHeaders(),
+  });
 };
 
 // Service pour permettre au resto de répondre à un avis
@@ -171,7 +221,9 @@ const replyRating = async (ratingId, restoReply) => {
   return axios.put(
     uriPath + "/ratings/replyRating/" + ratingId,
     { restoReply },
-    config
+    {
+      headers: createAuthHeaders(),
+    }
   );
 };
 
@@ -184,7 +236,9 @@ const updateResto = (data) => {
       Authorization: `Bearer ${resto.token}`,
     },
   };
-  return axios.put(uriPath + "/restos/update", data, config);
+  return axios.put(uriPath + "/restos/update", data, {
+    headers: createAuthHeaders(),
+  });
 };
 
 // Service qui permet de mettre à jour les infos du user
@@ -196,7 +250,9 @@ const updateUser = (data) => {
       Authorization: `Bearer ${user.token}`,
     },
   };
-  return axios.put(uriPath + "/users/update", data, config);
+  return axios.put(uriPath + "/users/update", data, {
+    headers: createAuthHeaders(),
+  });
 };
 
 const uploadUserPhoto = async (formData) => {
@@ -208,8 +264,11 @@ const uploadUserPhoto = async (formData) => {
     },
   };
 
-  return axios.post(uriPath + "/users/uploadUserPhoto", formData, config);
+  return axios.post(uriPath + "/users/uploadUserPhoto", formData, {
+    headers: createAuthHeaders(),
+  });
 };
+
 export {
   registerResto,
   registerUser,
