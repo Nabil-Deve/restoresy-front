@@ -17,6 +17,25 @@ const SignUpResto = (props) => {
   const [about, setAbout] = useState("");
   const [password, setPassword] = useState("");
 
+  const [image, setImage] = useState(null);
+
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.substr(0, 5) === "image" && file.size < 1000000) {
+      setFileToBase(file);
+    } else {
+      alert("Invalid file. Please select an image under 1MB.");
+    }
+  };
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+  };
+
   const onRegisterResto = async () => {
     try {
       const res = await registerResto({
@@ -29,6 +48,7 @@ const SignUpResto = (props) => {
         menu,
         about,
         password,
+        image,
       });
 
       alert("Votre restaurant a bien été créé. Merci de vous connecter.");
@@ -127,6 +147,11 @@ const SignUpResto = (props) => {
               type="password"
               placeholder="Entrez le mot de passe"
             />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Image du restaurant</Form.Label>
+            <Form.Control type="file" onChange={handleImage} accept="image/*" />
           </Form.Group>
 
           <Button variant="primary" onClick={onRegisterResto}>
