@@ -110,9 +110,7 @@ const getRestoBookings = async () => {
       Authorization: `Bearer ${resto.token}`,
     },
   };
-  return axios.get(uriPath + "/bookings/getRestoBookings", {
-    headers: createAuthHeaders(),
-  });
+  return axios.get(uriPath + "/bookings/getRestoBookings", config);
 };
 
 // Fonction qui permet au resto de refuser une résa
@@ -127,9 +125,7 @@ const refuseBooking = async (bookingId) => {
   return axios.put(
     uriPath + "/bookings/refuseBooking/" + bookingId,
     {}, // On n'envoie pas d'infos mais le statut qu'on précise.
-    {
-      headers: createAuthHeaders(),
-    }
+    config
   );
 };
 
@@ -145,9 +141,7 @@ const acceptBooking = async (bookingId) => {
   return axios.put(
     uriPath + "/bookings/acceptBooking/" + bookingId,
     {},
-    {
-      headers: createAuthHeaders(),
-    }
+    config
   );
 };
 
@@ -203,9 +197,7 @@ const getMyRatings = async () => {
       Authorization: `Bearer ${resto.token}`,
     },
   };
-  return axios.get(uriPath + "/ratings/getMyRatings", {
-    headers: createAuthHeaders(),
-  });
+  return axios.get(uriPath + "/ratings/getMyRatings", config);
 };
 
 // Service pour permettre au resto de répondre à un avis
@@ -221,9 +213,7 @@ const replyRating = async (ratingId, restoReply) => {
   return axios.put(
     uriPath + "/ratings/replyRating/" + ratingId,
     { restoReply },
-    {
-      headers: createAuthHeaders(),
-    }
+    config
   );
 };
 
@@ -236,9 +226,7 @@ const updateResto = (data) => {
       Authorization: `Bearer ${resto.token}`,
     },
   };
-  return axios.put(uriPath + "/restos/update", data, {
-    headers: createAuthHeaders(),
-  });
+  return axios.put(uriPath + "/restos/update", data, config);
 };
 
 // Service qui permet de mettre à jour les infos du user
