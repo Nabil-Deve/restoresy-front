@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getItemJSON } from "../helpers/storage";
 
-const uriPath = "https://restoresy-back.vercel.app/";
+const uriPath = "https://restoresy-back.vercel.app";
 
 // APIService est le fichier qui contient toutes les fonctions qui vont intéragir avec le backend. On utilise la bibliothèque axios pour faire des requêtes http à notre serveur sur les différentes routes. Ex : /restos/register : ceci est une route qui est préalablement créée sur notre backend. Data : correspond à toutes les données qu'on envoie dans le body de la requête. Les données dans data doivent être strictement similaires aux données attendues côté backend respectant exactement la même nomenclature.
 
