@@ -62,7 +62,7 @@ const Booking = () => {
   // Fonction qui sera appelée au click pour pouvoir créer le booking dans la bancked
   const onCreateBooking = async () => {
     try {
-      const formattedHour = hour.toISOString();
+      const formattedHour = hour.toString();
       const res = await createBooking(
         resto._id,
         numberGuests,
