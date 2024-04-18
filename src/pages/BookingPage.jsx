@@ -24,7 +24,7 @@ const Booking = () => {
 
   // L'état des variables avant de réserver
   const [numberGuests, setNumberGuests] = useState(1);
-  const [hour, setHour] = useState("");
+  const [hour, setHour] = useState(new Date());
   const [comment, setComment] = useState(null);
   const [date, setDate] = useState(new Date());
 
@@ -62,10 +62,11 @@ const Booking = () => {
   // Fonction qui sera appelée au click pour pouvoir créer le booking dans la bancked
   const onCreateBooking = async () => {
     try {
+      const formattedHour = hour.toISOString();
       const res = await createBooking(
         resto._id,
         numberGuests,
-        hour,
+        formattedHour,
         date,
         comment
       );
@@ -109,8 +110,8 @@ const Booking = () => {
 
               <div className="timepicker">
                 <TimePicker
-                  onChange={(value) => setHour(value.toString())}
-                  value={hour.toString()}
+                  onChange={(value) => setHour(new Date(value))}
+                  value={hour}
                 />
               </div>
 
