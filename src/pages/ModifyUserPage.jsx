@@ -5,8 +5,11 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { getItemJSON, setItemJSON } from "../helpers/storage";
 import userphoto from "../assets/images/userphoto.avif";
 import { updateUser, uploadUserPhoto } from "../services/APIService";
+import { useNavigate } from "react-router-dom";
 
 const ModifyUserPage = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState(null);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -44,7 +47,7 @@ const ModifyUserPage = () => {
 
       alert("Votre profile a été mis à jour");
       setItemJSON("user", { ...user, firstName, lastName });
-      window.location.reload();
+      navigate("/");
     } catch (e) {
       alert(e);
     }
