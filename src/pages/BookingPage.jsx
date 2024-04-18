@@ -62,11 +62,10 @@ const Booking = () => {
   // Fonction qui sera appelée au click pour pouvoir créer le booking dans la bancked
   const onCreateBooking = async () => {
     try {
-      const formattedHour = hour.toString();
       const res = await createBooking(
         resto._id,
         numberGuests,
-        formattedHour,
+        hour,
         date,
         comment
       );
@@ -109,10 +108,7 @@ const Booking = () => {
               <Button onClick={increase}>+</Button>
 
               <div className="timepicker">
-                <TimePicker
-                  onChange={(value) => setHour(new Date(value))}
-                  value={hour}
-                />
+                <TimePicker onChange={setHour} value={hour} />
               </div>
 
               <p className="comment-bp">Commentaires</p>
