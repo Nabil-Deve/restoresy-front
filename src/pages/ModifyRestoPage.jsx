@@ -52,7 +52,7 @@ const ModifyRestoPage = () => {
 
       alert("Votre resto a bien été mis à jour");
       setItemJSON("resto", { ...resto, name, address, phone, cuisine, hours });
-      window.location.reload(); // Recharge la page.
+      navigate("/");
     } catch (e) {
       alert(e);
     }
