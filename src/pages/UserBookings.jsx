@@ -88,7 +88,7 @@ const UserBookings = (props) => {
                   <p>{booking.resto.cuisine}</p>
                   <p>
                     Date: {moment(booking.date).format("DD/MM/YYYY")} à{" "}
-                    {moment(booking.hour).format("HH:hh")}
+                    {booking.hour}
                   </p>
                 </div>
               </Card.Text>
