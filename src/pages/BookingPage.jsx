@@ -24,7 +24,7 @@ const Booking = () => {
 
   // L'état des variables avant de réserver
   const [numberGuests, setNumberGuests] = useState(1);
-  const [hour, setHour] = useState(new Date());
+  const [hour, setHour] = useState("");
   const [comment, setComment] = useState(null);
   const [date, setDate] = useState(new Date());
 
