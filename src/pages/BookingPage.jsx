@@ -108,7 +108,10 @@ const Booking = () => {
               <Button onClick={increase}>+</Button>
 
               <div className="timepicker">
-                <TimePicker onChange={setHour} value={hour} />
+                <TimePicker
+                  onChange={(value) => setHour(value.toString())}
+                  value={hour.toString()}
+                />
               </div>
 
               <p className="comment-bp">Commentaires</p>
