@@ -27,6 +27,7 @@ const Booking = () => {
   const [hour, setHour] = useState("10:00");
   const [comment, setComment] = useState(null);
   const [date, setDate] = useState(new Date());
+  console.log(hour);
 
   // Elle sert à récupérer l'id du resto dans le back
   const onGetResto = async () => {
@@ -69,6 +70,7 @@ const Booking = () => {
         date,
         comment
       );
+      console.log("hour après", hour);
       alert("Votre réservation a bien été enregistrée.");
       navigate("/search");
     } catch (e) {
