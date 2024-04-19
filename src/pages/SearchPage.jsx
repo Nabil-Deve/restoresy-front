@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllRestos, searchRestos } from "../services/APIService";
 import { Button } from "react-bootstrap";
 
-const Search = (props) => {
+const Search = () => {
   const navigate = useNavigate();
   const [restos, setRestos] = useState([]);
   const [foundRestos, setFoundRestos] = useState([]);
