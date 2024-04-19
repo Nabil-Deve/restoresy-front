@@ -3,8 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { getItemJSON, setItemJSON } from "../helpers/storage";
-import userphoto from "../assets/images/userphoto.avif";
-import { updateUser, uploadUserPhoto } from "../services/APIService";
+import { updateUser } from "../services/APIService";
 import { useNavigate } from "react-router-dom";
 
 const ModifyUserPage = () => {
@@ -14,8 +13,6 @@ const ModifyUserPage = () => {
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
-  const [photo, setPhoto] = useState(null);
-  const [previewPhoto, setPreviewPhoto] = useState(null);
 
   useEffect(() => {
     const u = getItemJSON("user"); // Charger le user depuis le LocalStorage
