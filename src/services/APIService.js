@@ -243,20 +243,6 @@ const updateUser = (data) => {
   });
 };
 
-const uploadUserPhoto = async (formData) => {
-  const user = getItemJSON("user");
-  const config = {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${user.token}`,
-    },
-  };
-
-  return axios.post(uriPath + "/users/uploadUserPhoto", formData, {
-    headers: createAuthHeaders(),
-  });
-};
-
 export {
   registerResto,
   registerUser,

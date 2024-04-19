@@ -53,32 +53,6 @@ const ModifyUserPage = () => {
     }
   };
 
-  const onUploadUserPhoto = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("image", photo);
-
-      const res = await uploadUserPhoto(formData);
-      setItemJSON("user", { ...user, photoURI: res.data.photoURI });
-
-      alert("Photo mise à jour");
-    } catch (e) {
-      alert(e);
-    }
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setPhoto(file);
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewPhoto(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
     <div>
       <Header />
@@ -93,15 +67,6 @@ const ModifyUserPage = () => {
                 />
               ) : null}
             </Col>
-
-            <input
-              filename={photo}
-              onChange={handleImageChange}
-              type="file"
-              accept="image/*"
-            ></input>
-
-            <Button onClick={onUploadUserPhoto}>Télécharger une photo</Button>
           </Col>
           <Col>
             <Form style={{ width: "50%" }}>
