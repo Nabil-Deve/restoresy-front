@@ -50,7 +50,7 @@ const Footer = (props) => {
         </Row>
         <Row>
           <Col className="text-center py-3">
-            © 2024 RestoResy, Tous droits réservés
+            © 2024 RestoResy. Tous droits réservés
           </Col>
         </Row>
       </Container>

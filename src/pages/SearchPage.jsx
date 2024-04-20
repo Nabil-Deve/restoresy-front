@@ -78,7 +78,7 @@ const Search = () => {
       <div>
         <Header />
         <div className="container-search">
-          <h1>Bonjour {user},</h1>
+          <h1>Bonjour {user.firstName},</h1>
           <Button onClick={() => navigate("/UserBookings")}>
             Mes réservations
           </Button>

@@ -88,10 +88,10 @@ const Booking = () => {
               <div>
                 <h1>{resto.name}</h1>
                 <p>{resto.address} </p>
-                <p>{resto.cuisine}</p>
-                <p>Email: {resto.email}</p>
-                <p>Téléphone: {resto.phone}</p>
-                <p>Horaires: {resto.hours}</p>
+                <p>Cuisine : {resto.cuisine}</p>
+                <p>Email : {resto.email}</p>
+                <p>Téléphone : {resto.phone}</p>
+                <p>Horaires : {resto.hours}</p>
               </div>
             </Col>
           </Row>
@@ -149,7 +149,7 @@ export default Booking;
     // on appelle notre Notre fonction 
     onGetResto()
 
-  }, [params]); quand la varible params elle change le use efffect il se réexécute 
+  }, [params]); quand la varible params elle change le use effect se réexécute 
 
 */
 }
