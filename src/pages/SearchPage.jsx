@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import italia from "../assets/images/italia.svg";
-import thai from "../assets/images/thai.svg";
-import bebert from "../assets/images/bebert.svg";
 import heart from "../assets/images/heart.svg";
 import map from "../assets/images/map.svg";
-import magnifyingglass from "../assets/images/magnifyingglass.svg";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

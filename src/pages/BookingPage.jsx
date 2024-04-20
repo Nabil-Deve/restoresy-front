@@ -34,7 +34,6 @@ const Booking = () => {
       const restoId = params.restoId;
       const res = await getRestoById(restoId); // res : réponse qu'on reçoit du back
       setResto(res.data); // Pour afficher les infos du resto. Objet qu'on voit dans la console. C'est le resto.
-      console.log(res.data);
     } catch (e) {
       alert(e);
     }
@@ -69,7 +68,6 @@ const Booking = () => {
         date,
         comment
       );
-      console.log("hour après", hour);
       alert("Votre réservation a bien été enregistrée.");
       navigate("/search");
     } catch (e) {

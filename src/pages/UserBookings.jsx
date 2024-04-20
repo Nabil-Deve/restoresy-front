@@ -61,7 +61,7 @@ const UserBookings = () => {
         {bookings.map((booking, index) => (
           <Card className="card-user-booking" key={"bookings" + index}>
             <Card.Body>
-              {/*On ajoute toutes les infos de la résa sur la card.  */}
+              {/*On ajoute toutes les infos de la réservation sur la card.  */}
               <Card.Title>Chez {booking.resto.name}</Card.Title>
               {booking.status == "pending" ? (
                 <Card.Text style={{ color: "blue" }}>
