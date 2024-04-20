@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import restophoto from "../assets/images/restophoto.svg";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import { Button, Col, Container, Row } from "react-bootstrap";
@@ -84,9 +83,6 @@ const Booking = () => {
 
         <Container className="resto-details-bp">
           <Row>
-            <Col>
-              <img src={restophoto} />
-            </Col>
             <Col>
               {/*C'est la fonction setResto qui change la valeur du resto. */}
               <div>
