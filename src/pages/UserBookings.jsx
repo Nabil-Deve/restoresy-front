@@ -9,7 +9,7 @@ import moment from "moment";
 import "moment/min/locales";
 moment.locale("fr");
 
-const UserBookings = (props) => {
+const UserBookings = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [bookings, setBookings] = useState([]);
