@@ -53,51 +53,47 @@ const ModifyUserPage = () => {
   return (
     <div>
       <Header />
-      <Container className="container-modify-up">
-        <Row>
-          <Col>
-            <Form style={{ width: "50%" }}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Nom</Form.Label>
-                <Form.Control
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  type="name"
-                  placeholder="Entrez votre nom"
-                />
-              </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Prénom</Form.Label>
-                <Form.Control
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  type="first-name"
-                  placeholder="Entrez votre prénom"
-                />
-              </Form.Group>
+      <Form className="container-modify-up">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Nom</Form.Label>
+          <Form.Control
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            type="name"
+            placeholder="Entrez votre nom"
+          />
+        </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  value={email}
-                  disabled={true}
-                  type="email"
-                  placeholder="Entrez votre email"
-                />
-              </Form.Group>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-      <Button
-        onClick={onUpdateUser}
-        className="button-update-m-up"
-        variant="primary"
-        type="submit"
-      >
-        Mettre à jour
-      </Button>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Prénom</Form.Label>
+          <Form.Control
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            type="first-name"
+            placeholder="Entrez votre prénom"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            value={email}
+            disabled={true}
+            type="email"
+            placeholder="Entrez votre email"
+          />
+        </Form.Group>
+        <Button
+          onClick={onUpdateUser}
+          className="button-update-m-up"
+          variant="primary"
+          type="submit"
+        >
+          Mettre à jour
+        </Button>
+      </Form>
+
       <Footer />
     </div>
   );
