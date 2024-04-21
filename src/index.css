@@ -149,6 +149,7 @@ body {
 }
 /*ModifyUserPage*/
 .container-modify-up {
+  width: 30%;
   padding: 20px;
   margin-left: 40%;
 }
