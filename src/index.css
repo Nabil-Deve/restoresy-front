@@ -149,7 +149,8 @@ body {
 }
 /*ModifyUserPage*/
 .container-modify-up {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 20px;
 }
 
