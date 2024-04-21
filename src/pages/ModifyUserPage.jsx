@@ -56,16 +56,6 @@ const ModifyUserPage = () => {
       <Container className="container-modify-up">
         <Row>
           <Col>
-            <Col>
-              {user && user.photoURI ? (
-                <img
-                  src={{ uri: "http://localhost:3100/images/" + user.photoURI }}
-                  style={{ height: 200, width: 200 }}
-                />
-              ) : null}
-            </Col>
-          </Col>
-          <Col>
             <Form style={{ width: "50%" }}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Nom</Form.Label>
