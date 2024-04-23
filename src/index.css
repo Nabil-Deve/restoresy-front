@@ -314,8 +314,7 @@ body {
   .photo-dish {
     display: none;
   }
-  .form-section {
-    margin-bottom: 20px;
-    margin-top: 60px;
+  .footer {
+    margin-top: 50px;
   }
 }
