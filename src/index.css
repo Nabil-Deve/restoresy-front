@@ -324,4 +324,7 @@ body {
   .form-signup Button {
     margin-left: 0%;
   }
+  .resto-details {
+    flex-direction: column;
+  }
 }
