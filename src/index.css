@@ -311,4 +311,7 @@ body {
   .home-section {
     flex-direction: column;
   }
+  .photo-dish {
+    display: none;
+  }
 }
