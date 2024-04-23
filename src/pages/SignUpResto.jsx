@@ -154,7 +154,11 @@ const SignUpResto = (props) => {
             <Form.Control type="file" onChange={handleImage} accept="image/*" />
           </Form.Group>
 
-          <Button variant="primary" onClick={onRegisterResto}>
+          <Button
+            className="resto-button"
+            variant="primary"
+            onClick={onRegisterResto}
+          >
             Créer le compte du restaurant
           </Button>
         </Form>
