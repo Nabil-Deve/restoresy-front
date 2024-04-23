@@ -159,7 +159,7 @@ const SignUpResto = (props) => {
             variant="primary"
             onClick={onRegisterResto}
           >
-            Créer le compte du restaurant
+            Créer le restaurant
           </Button>
         </Form>
       </div>
