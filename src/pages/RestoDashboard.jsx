@@ -96,7 +96,11 @@ const RestoDashboard = () => {
           <Col>
             <h1>Réservations</h1>
             {bookings.map((booking, index) => (
-              <Card className="card-user-booking" key={"bookings" + index}>
+              <Card
+                className="card-user-booking"
+                key={"bookings" + index}
+                style={{ border: "2px solid blue" }}
+              >
                 <Card.Body>
                   {/*On ajoute toutes les infos de la résa sur la card.  */}
                   <Card.Title>
