@@ -27,7 +27,7 @@ const RatingCardResto = (props) => {
   };
 
   return (
-    <Card className="card-dashboard">
+    <Card className="card-dashboard" style={{ border: "2px solid blue" }}>
       <Card.Body>
         <Card.Title>
           {rating.user.firstName} {rating.user.lastName}
