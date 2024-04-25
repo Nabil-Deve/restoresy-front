@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { clearAll, getItemJSON } from "../helpers/storage";
 
 // Tous les composants sont en majuscules.
-const Header = (props) => {
+const Header = () => {
   const navigate = useNavigate();
   // on récupère l'utilisateur qui est connecté
   const [user, setUser] = useState(null);

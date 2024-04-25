@@ -45,7 +45,7 @@ const UserBookings = () => {
     try {
       const res = await cancelBooking(bookingId);
       alert("La réservation a bien été annulée");
-      onGetUserBookings(); // On rafraîchit pour que ça se met bien à jour.
+      onGetUserBookings(); // On rafraîchit pour que cela se met bien à jour.
     } catch (e) {
       alert(e);
     }
