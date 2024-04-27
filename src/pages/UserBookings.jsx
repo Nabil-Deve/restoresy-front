@@ -56,7 +56,7 @@ const UserBookings = () => {
       <Header />
 
       <h1 className="user-bookings">Mes réservations</h1>
-      <div className="list-bookings">
+      <div className="list-bookings" style={{ backgroundColor: "yellow" }}>
         {/*On fait une boucle pour afficher toutes les résas une par une grâce à map. Quand on créé un map il faut donner une clé unique à chaque élément de la liste*/}
         {bookings.map((booking, index) => (
           <Card className="card-user-booking" key={"bookings" + index}>
