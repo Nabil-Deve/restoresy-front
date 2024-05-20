@@ -70,7 +70,7 @@ const RestoPage = () => {
           <Row className="content-resto-page">
             <Col>
               <div className="resto-details">
-                <img src={resto.imageURI} />
+                <img src={resto.imageURI} height={"100"} width={"100"} />
                 <div className="resto-address">
                   <h1>
                     {resto.name}
