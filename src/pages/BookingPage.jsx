@@ -83,7 +83,9 @@ const Booking = () => {
           <Row>
             <Col>
               {/*C'est la fonction setResto qui change la valeur du resto. */}
-              <div style={{ backgroundColor: "blue" }}>
+              <div
+                style={{ backgroundColor: "blue", border: "2px solid blue" }}
+              >
                 <h1>{resto.name}</h1>
                 <p>{resto.address} </p>
                 <p>Cuisine : {resto.cuisine}</p>
