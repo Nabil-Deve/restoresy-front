@@ -62,7 +62,7 @@ const UserBookings = () => {
           <Card
             className="card-user-booking"
             key={"bookings" + index}
-            style={{ backgroundColor: "yellow" }}
+            style={{ backgroundColor: "#ADD8E6" }}
           >
             <Card.Body>
               {/*On ajoute toutes les infos de la réservation sur la card.  */}
@@ -98,6 +98,7 @@ const UserBookings = () => {
               </Card.Text>
               {booking.status == "pending" || booking.status == "accepted" ? (
                 <Button
+                  style={{ marginRight: "10px" }}
                   variant="primary"
                   onClick={() => onCancelBooking(booking._id)}
                 >
