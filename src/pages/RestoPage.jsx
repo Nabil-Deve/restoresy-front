@@ -95,7 +95,10 @@ const RestoPage = () => {
                 </div>
               </div>
 
-              <ButtonGroup aria-label="stack-resto-page">
+              <ButtonGroup
+                aria-label="stack-resto-page"
+                style={{ marginTop: "15px" }}
+              >
                 <Button
                   variant={selectedSection == "about" ? "secondary" : "light"}
                   onClick={() => setSelectedSection("about")}
