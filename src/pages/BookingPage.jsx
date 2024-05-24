@@ -88,6 +88,7 @@ const Booking = () => {
                   border: "2px solid black",
                   paddingLeft: "20px",
                   backgroundColor: "blue",
+                  width: "50%",
                 }}
               >
                 <h1>{resto.name}</h1>
