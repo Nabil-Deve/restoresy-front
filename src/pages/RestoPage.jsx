@@ -69,8 +69,11 @@ const RestoPage = () => {
         <Container className="container-resto-page">
           <Row className="content-resto-page">
             <Col>
-              <div className="resto-details">
-                <img src={resto.imageURI} height={"100"} width={"100"} />
+              <div
+                className="resto-details"
+                style={{ border: "2px solid black", width: "40%" }}
+              >
+                <img src={resto.imageURI} height={"300"} width={"300"} />
                 <div className="resto-address">
                   <h1>
                     {resto.name}
