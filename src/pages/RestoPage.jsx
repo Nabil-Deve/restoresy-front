@@ -71,7 +71,11 @@ const RestoPage = () => {
             <Col>
               <div
                 className="resto-details"
-                style={{ border: "2px solid black", width: "100%" }}
+                style={{
+                  backgroundColor: "#AFCDF9",
+                  border: "2px solid black",
+                  width: "100%",
+                }}
               >
                 <img src={resto.imageURI} height={"300"} width={"300"} />
                 <div className="resto-address">

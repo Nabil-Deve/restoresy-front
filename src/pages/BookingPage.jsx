@@ -87,7 +87,7 @@ const Booking = () => {
                 style={{
                   border: "2px solid black",
                   paddingLeft: "20px",
-                  backgroundColor: "#ADD8E6",
+                  backgroundColor: "#AFCDF9",
                   width: "50%",
                 }}
               >
