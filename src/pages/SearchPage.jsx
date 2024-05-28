@@ -134,7 +134,7 @@ const Search = () => {
                       onClick={() => navigate("/restopage/" + resto._id)}
                       src={resto.imageURI}
                     />
-                    <p>{resto.name}</p>
+                    <p style={{ fontWeight: "bold" }}>{resto.name}</p>
                     <p>
                       <p
                         onClick={() =>
