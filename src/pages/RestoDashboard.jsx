@@ -159,7 +159,9 @@ const RestoDashboard = () => {
           </Col>
 
           <Col>
-            <h1>Avis des clients</h1>
+            <h1 style={{ marginLeft: "2px", marginTop: "30px" }}>
+              Avis des clients
+            </h1>
             {ratings.map((rating, index) => (
               <RatingCardResto rating={rating} key={"ratingcard" + index} />
             ))}
