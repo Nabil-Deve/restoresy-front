@@ -136,13 +136,13 @@ const Search = () => {
                     />
                     <p>{resto.name}</p>
                     <p>
-                      <img src={map} />
                       <p
                         onClick={() =>
                           (window.location.href =
                             "http://maps.google.com/?q=" + resto.address)
                         }
                       >
+                        <img src={map} />
                         {resto.address}
                       </p>
                     </p>
