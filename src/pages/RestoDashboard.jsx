@@ -132,7 +132,7 @@ const RestoDashboard = () => {
                     <div>
                       <p>Nombre de couverts : {booking.numberGuests}</p>
                       <p>
-                        Date: {moment(booking.date).format("DD/MM/YYYY")} à{" "}
+                        Le {moment(booking.date).format("DD/MM/YYYY")} à{" "}
                         {booking.hour}
                       </p>
                     </div>
