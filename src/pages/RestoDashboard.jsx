@@ -94,7 +94,9 @@ const RestoDashboard = () => {
       <Container>
         <Row>
           <Col>
-            <h1>Réservations</h1>
+            <h1 style={{ marginLeft: "5px", marginTop: "10px" }}>
+              Réservations
+            </h1>
             {bookings.map((booking, index) => (
               <Card
                 className="card-user-booking"
