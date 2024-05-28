@@ -69,7 +69,11 @@ const Ratingpage = () => {
           />
         </Form.Group>
       </Form>
-      <Button onClick={onCreateRating} variant="primary">
+      <Button
+        onClick={onCreateRating}
+        variant="primary"
+        style={{ marginLeft: "40%" }}
+      >
         Publier mon avis
       </Button>
       <Footer />
