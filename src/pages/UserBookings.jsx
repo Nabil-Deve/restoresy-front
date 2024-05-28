@@ -62,11 +62,11 @@ const UserBookings = () => {
           <Card
             className="card-user-booking"
             key={"bookings" + index}
-            style={{ backgroundColor: "#AFCDF9", border: "2px solid blue" }}
+            style={{ backgroundColor: "#ADD8E6" }}
           >
             <Card.Body>
               {/*On ajoute toutes les infos de la réservation sur la card.  */}
-              <Card.Title> {booking.resto.name}</Card.Title>
+              <Card.Title>Chez {booking.resto.name}</Card.Title>
               {booking.status == "pending" ? (
                 <Card.Text style={{ color: "blue" }}>
                   En cours de confirmation
@@ -91,7 +91,7 @@ const UserBookings = () => {
                   <p>{booking.resto.address} </p>
                   <p>{booking.resto.cuisine}</p>
                   <p>
-                    Le {moment(booking.date).format("DD/MM/YYYY")} à{" "}
+                    Date: {moment(booking.date).format("DD/MM/YYYY")} à{" "}
                     {booking.hour}
                   </p>
                 </div>
