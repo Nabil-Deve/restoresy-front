@@ -142,7 +142,7 @@ const Search = () => {
                             "http://maps.google.com/?q=" + resto.address)
                         }
                       >
-                        <img src={map} />
+                        <img src={map} style={{ marginRight: "5px" }} />
                         {resto.address}
                       </p>
                     </p>
