@@ -106,12 +106,12 @@ const RestoDashboard = () => {
                 <Card.Body>
                   {/*On ajoute toutes les infos de la résa sur la card.  */}
                   <Card.Title>
-                    Client {booking.user.firstName} {booking.user.lastName}
+                    {booking.user.firstName} {booking.user.lastName}
                   </Card.Title>
 
                   {booking.status == "pending" ? (
                     <Card.Text style={{ color: "blue" }}>
-                      En cours de confirmations
+                      En cours de confirmation
                     </Card.Text>
                   ) : null}
                   {booking.status == "refused" ? (
