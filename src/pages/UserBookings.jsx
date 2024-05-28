@@ -66,7 +66,7 @@ const UserBookings = () => {
           >
             <Card.Body>
               {/*On ajoute toutes les infos de la réservation sur la card.  */}
-              <Card.Title>Chez {booking.resto.name}</Card.Title>
+              <Card.Title> {booking.resto.name}</Card.Title>
               {booking.status == "pending" ? (
                 <Card.Text style={{ color: "blue" }}>
                   En cours de confirmation
