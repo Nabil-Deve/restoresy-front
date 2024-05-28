@@ -94,7 +94,7 @@ const RestoDashboard = () => {
       <Container>
         <Row>
           <Col>
-            <h1 style={{ marginLeft: "5px", marginTop: "10px" }}>
+            <h1 style={{ marginLeft: "2px", marginTop: "30px" }}>
               Réservations
             </h1>
             {bookings.map((booking, index) => (
