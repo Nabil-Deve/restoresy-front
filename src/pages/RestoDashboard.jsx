@@ -101,7 +101,7 @@ const RestoDashboard = () => {
               <Card
                 className="card-user-booking"
                 key={"bookings" + index}
-                style={{ border: "2px solid blue" }}
+                style={{ border: "2px solid blue", backgroundColor: "#AFCDF9" }}
               >
                 <Card.Body>
                   {/*On ajoute toutes les infos de la résa sur la card.  */}
@@ -128,7 +128,7 @@ const RestoDashboard = () => {
                     </Card.Text>
                   ) : null}
 
-                  <Card.Text style={{ backgroundColor: "#AFCDF9" }}>
+                  <Card.Text>
                     <div>
                       <p>Nombre de couverts : {booking.numberGuests}</p>
                       <p>
