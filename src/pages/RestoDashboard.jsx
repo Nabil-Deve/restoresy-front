@@ -139,6 +139,7 @@ const RestoDashboard = () => {
                   </Card.Text>
                   {booking.status == "pending" ? (
                     <Button
+                      style={{ marginRight: "5px" }}
                       variant="danger"
                       onClick={() => onRefuseBooking(booking._id)}
                     >
