@@ -62,7 +62,7 @@ const UserBookings = () => {
           <Card
             className="card-user-booking"
             key={"bookings" + index}
-            style={{ backgroundColor: "#AFCDF9" }}
+            style={{ backgroundColor: "#AFCDF9", border: "2px solid blue" }}
           >
             <Card.Body>
               {/*On ajoute toutes les infos de la réservation sur la card.  */}
