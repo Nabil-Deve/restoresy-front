@@ -128,7 +128,7 @@ const RestoDashboard = () => {
                     </Card.Text>
                   ) : null}
 
-                  <Card.Text>
+                  <Card.Text style={{ backgroundColor: "#AFCDF9" }}>
                     <div>
                       <p>Nombre de couverts : {booking.numberGuests}</p>
                       <p>
